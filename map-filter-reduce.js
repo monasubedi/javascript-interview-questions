@@ -68,8 +68,8 @@ let total = students.map((stu) => {
         return stu;
     }
 }).filter((s) => s.marks > 60)
-// .reduce((acc, cur) => {
-//     return acc + cur.marks
-// }, 0);
+.reduce((acc, cur) => {
+    return acc + cur.marks
+}, 0);
 
 console.log(total);
