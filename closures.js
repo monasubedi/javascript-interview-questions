@@ -165,8 +165,6 @@
 //             console.log("Already run");
 
 //         }
-
-
 //     }
 
 
@@ -199,48 +197,68 @@
 
 //create a memoized function
 
-const clumsysquare = (num1, num2) => {
-    for (let i = 1; i <= 100000000; i++) {
+// const clumsysquare = (num1, num2) => {
+//     for (let i = 1; i <= 100000000; i++) {
 
-    }
-    return num1 * num2;
-};
+//     }
+//     return num1 * num2;
+// };
 
-function memoize(func, context) {
-    let obj = {};
-    return function (num1, num2) {
-        let key = JSON.stringify(num1, num2);
-        let value;
-        if (!obj[key]) {
-            value = func.apply(context || this, arguments);
-            obj[key] = value;
+// function memoize(func, context) {
+//     let obj = {};
+//     return function (num1, num2) {
+//         let key = JSON.stringify(num1, num2);
+//         let value;
+//         if (!obj[key]) {
+//             value = func.apply(context || this, arguments);
+//             obj[key] = value;
+//         }
+//         return obj[key];
+
+//     }
+// }
+
+// const mem = memoize(clumsysquare);
+
+// console.time("First call");
+// console.log(mem(9467, 3434));
+// console.timeEnd("First call");
+
+// console.time("Second call");
+// console.log(mem(9467, 3434));
+// console.timeEnd("Second call");
+
+// console.time("First call");
+// console.log(mem(999, 999));
+// console.timeEnd("First call");
+
+// console.time("Second call");
+// console.log(mem(999, 999));
+// console.timeEnd("Second call");
+
+
+
+
+
+
+
+//Difference between Closure and Scope
+//Closure - if a function has a function inside of it, the inner function is the closure, there are three scopes in closure, local scope, outer functions scope and global scope.
+//Scope - when defining a variable, it has scopes till where it is recogized. there are two scopes - local scope and global scope.
+
+function distinctPairs() {
+    const array = [1, 2, 3, 2, 3, 4, 1];
+    const pairs = new Set();
+
+    for (let i = 0; i < array.length; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+            const pair = [array[i], array[j]].sort();
+            pairs.add(pair.toString());
         }
-        return obj[key];
-
     }
+    let distinctPairs = Array.from(pairs).map(pair => pair.split(",").map(Number));
+    return distinctPairs;
 }
-
-const mem = memoize(clumsysquare);
-
-console.time("First call");
-console.log(mem(9467, 3434));
-console.timeEnd("First call");
-
-console.time("Second call");
-console.log(mem(9467, 3434));
-console.timeEnd("Second call");
-
-console.time("First call");
-console.log(mem(999, 999));
-console.timeEnd("First call");
-
-console.time("Second call");
-console.log(mem(999, 999));
-console.timeEnd("Second call");
-
-
-
-
-
+console.log(distinctPairs());
 
 
